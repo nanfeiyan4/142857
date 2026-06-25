@@ -1,0 +1,17 @@
+# Hardhat / Node
+node_modules/
+cache/
+artifacts/
+typechain-types/
+
+# Environment
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>区块链众筹系统 - Crowdfunding DApp</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- ========== Navigation ========== -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <i class="bi bi-currency-bitcoin"></i> 区块链众筹系统
+      </a>
+      <div class="navbar-text text-light">
+        <span id="walletStatus" class="badge bg-warning text-dark">未连接钱包</span>
+        <span id="walletAddress" class="ms-2 d-none d-md-inline"></span>
+        <button id="btnConnect" class="btn btn-outline-light btn-sm ms-2">连接钱包</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== Tab Navigation ========== -->
+  <div class="container mt-4">
+    <ul class="nav nav-tabs" id="mainTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="projects-tab" data-bs-toggle="tab" data-bs-target="#projectsPanel"
+          type="button" role="tab">
+          <i class="bi bi-grid-fill"></i> 所有项目
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="create-tab" data-bs-toggle="tab" data-bs-target="#createPanel"
+          type="button" role="tab">
+          <i class="bi bi-plus-circle-fill"></i> 创建项目
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="myinfo-tab" data-bs-toggle="tab" data-bs-target="#myInfoPanel"
+          type="button" role="tab">
+          <i class="bi bi-person-fill"></i> 我的信息
+        </button>
+      </li>
+    </ul>
+
+    <!-- ========== Tab Content ========== -->
+    <div class="tab-content mt-3" id="mainTabContent">
+
+      <!-- ===== All Projects Panel ===== -->
+      <div class="tab-pane fade show active" id="projectsPanel" role="tabpanel">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="mb-0">
+            <span id="projectCount">0</span> 个众筹项目
+          </h4>
+          <button class="btn btn-outline-primary btn-sm" id="btnRefresh">
+            <i class="bi bi-arrow-clockwise"></i> 刷新
+          </button>
+        </div>
+        <div class="col-12 text-center py-5" id="noProjects">
+          <i class="bi bi-inbox" style="font-size: 3rem; color: #adb5bd;"></i>
+          <p class="text-muted mt-2">暂无众筹项目，快去创建一个吧！</p>
+        </div>
+        <div id="projectsContainer" class="row g-4">
+          <!-- Dynamic project cards -->
+        </div>
+      </div>
+
+      <!-- ===== Create Project Panel ===== -->
+      <div class="tab-pane fade" id="createPanel" role="tabpanel">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-6">
+            <div class="card shadow">
+              <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="bi bi-plus-circle"></i> 发起众筹项目</h5>
+              </div>
+              <div class="card-body">
+                <form id="createProjectForm">
+                  <div class="mb-3">
+                    <label for="projectName" class="form-label">项目名称 *</label>
+                    <input type="text" class="form-control" id="projectName"
+                      placeholder="输入项目名称" required maxlength="100">
+                  </div>
+                  <div class="mb-3">
+                    <label for="projectDesc" class="form-label">项目描述 *</label>
+                    <textarea class="form-control" id="projectDesc" rows="3"
+                      placeholder="描述你的项目目标和计划" required maxlength="500"></textarea>
+                  </div>
+                  <div class="mb-3">
+                    <label for="targetAmount" class="form-label">目标金额 (ETH) *</label>
+                    <div class="input-group">
+                      <input type="number" class="form-control" id="targetAmount"
+                        placeholder="0.00" step="0.01" min="0.01" required>
+                      <span class="input-group-text">ETH</span>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="deadline" class="form-label">截止日期 *</label>
+                    <input type="datetime-local" class="form-control" id="deadline" required>
+                    <div class="form-text">请设置一个未来的日期和时间</div>
+                  </div>
+                  <button type="submit" class="btn btn-primary w-100" id="btnCreate">
+                    <i class="bi bi-rocket-takeoff"></i> 创建项目
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== My Info Panel ===== -->
+      <div class="tab-pane fade" id="myInfoPanel" role="tabpanel">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card shadow mb-3">
+              <div class="card-header bg-info text-white">
+                <h5 class="mb-0"><i class="bi bi-wallet2"></i> 钱包信息</h5>
+              </div>
+              <div class="card-body">
+                <p><strong>地址：</strong><br>
+                  <span id="myAddress" class="text-break">--</span>
+                </p>
+                <p><strong>余额：</strong><br>
+                  <span id="myBalance">--</span> ETH
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="card shadow mb-3">
+              <div class="card-header bg-success text-white">
+                <h5 class="mb-0"><i class="bi bi-heart-fill"></i> 我的捐赠记录</h5>
+              </div>
+              <div class="card-body" id="myDonations">
+                <p class="text-muted">暂无捐赠记录</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="card shadow">
+              <div class="card-header bg-secondary text-white">
+                <h5 class="mb-0"><i class="bi bi-folder-fill"></i> 我创建的项目</h5>
+              </div>
+              <div class="card-body" id="myProjects">
+                <p class="text-muted">暂无创建的项目</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== Donate Modal ========== -->
+  <div class="modal fade" id="donateModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title"><i class="bi bi-cash-coin"></i> 捐赠</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p id="donateProjectName" class="fw-bold"></p>
+          <div class="mb-3">
+            <label for="donateAmount" class="form-label">捐赠金额 (ETH)</label>
+            <div class="input-group">
+              <input type="number" class="form-control" id="donateAmount"
+                placeholder="0.00" step="0.001" min="0.001" required>
+              <span class="input-group-text">ETH</span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-success" id="btnDonateConfirm">
+            <i class="bi bi-check-lg"></i> 确认捐赠
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== Donor List Modal ========== -->
+  <div class="modal fade" id="donorListModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-info text-white">
+          <h5 class="modal-title"><i class="bi bi-people-fill"></i> 捐赠者列表</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>捐赠者地址</th>
+                  <th>金额 (ETH)</th>
+                  <th>时间</th>
+                </tr>
+              </thead>
+              <tbody id="donorListBody">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== Toast Container ========== -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3" id="toastContainer"></div>
+
+  <!-- ========== Loading Overlay ========== -->
+  <div id="loadingOverlay" class="d-none">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- ethers.js -->
+  <script src="js/ethers.min.js"></script>
+  <!-- DApp Logic -->
+  <script type="module">
+    import { DApp } from './js/app.js';
+    window.addEventListener('load', () => DApp.init());
+  </script>
+</body>
+
+</html>

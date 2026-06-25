@@ -1,0 +1,73 @@
+<<<<<<< HEAD
+D:\Learning\BlockChain\Final_Task>npm run dev
+
+> crowdfunding-dapp@1.0.0 dev
+> http-server ./src -p 3000 -c-1
+
+Starting up http-server, serving ./src
+
+http-server version: 14.1.1
+
+http-server settings:
+CORS: disabled
+Cache: -1 seconds
+Connection Timeout: 120 seconds
+Directory Listings: visible
+AutoIndex: visible
+Serve GZIP Files: false
+Serve Brotli Files: false
+Default File Extension: none
+
+Available on:
+  http://192.168.56.1:3000
+  http://10.10.10.1:3000
+  http://192.168.20.1:3000
+  http://192.168.132.1:3000
+  http://172.25.234.113:3000
+  http://127.0.0.1:3000
+Hit CTRL-C to stop the server
+
+[2026-06-08T05:29:27.841Z]  "GET /" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+[2026-06-08T05:29:27.946Z]  "GET /css/style.css" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+[2026-06-08T05:29:27.951Z]  "GET /js/ethers.min.js" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+[2026-06-08T05:29:29.117Z]  "GET /js/app.js" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+[2026-06-08T05:29:29.130Z]  "GET /js/ethers.min.js" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+[2026-06-08T05:29:35.511Z]  "GET /favicon.ico" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+[2026-06-08T05:29:35.515Z]  "GET /favicon.ico" Error (404): "Not found"
+=======
+D:\Learning\BlockChain\Final_Task>npm run dev
+
+> crowdfunding-dapp@1.0.0 dev
+> http-server ./src -p 3000 -c-1
+
+Starting up http-server, serving ./src
+
+http-server version: 14.1.1
+
+http-server settings:
+CORS: disabled
+Cache: -1 seconds
+Connection Timeout: 120 seconds
+Directory Listings: visible
+AutoIndex: visible
+Serve GZIP Files: false
+Serve Brotli Files: false
+Default File Extension: none
+
+Available on:
+  http://192.168.56.1:3000
+  http://10.10.10.1:3000
+  http://192.168.20.1:3000
+  http://192.168.132.1:3000
+  http://172.25.234.113:3000
+  http://127.0.0.1:3000
+Hit CTRL-C to stop the server
+
+[2026-06-08T05:29:27.841Z]  "GET /" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+[2026-06-08T05:29:27.946Z]  "GET /css/style.css" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+[2026-06-08T05:29:27.951Z]  "GET /js/ethers.min.js" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+[2026-06-08T05:29:29.117Z]  "GET /js/app.js" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+[2026-06-08T05:29:29.130Z]  "GET /js/ethers.min.js" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+[2026-06-08T05:29:35.511Z]  "GET /favicon.ico" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+[2026-06-08T05:29:35.515Z]  "GET /favicon.ico" Error (404): "Not found"
+>>>>>>> 8decb2a2f9ab17d05108d6a04b568b7214bd4a50
